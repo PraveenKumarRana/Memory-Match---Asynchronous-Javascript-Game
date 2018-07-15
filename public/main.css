@@ -1,0 +1,35 @@
+body{
+    /*background-image: url(https://www.macpricesaustralia.com.au/wp-content/uploads/2018/07/2018-Space-Grey-MacBook-Pro-Mac-Computer.jpg);*/
+    background-position: center;
+    background-size: cover;
+}
+image{
+    opacity: 0.2;
+}
+h1{
+    color: skyblue;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom:20px;
+    font-size: 60px;
+    text-shadow: 2px 1px 0px red;
+}
+table{
+    text-align:center;
+}
+
+td{
+    height: 120px;
+    width: 120px;
+    background-color: skyblue;
+}
+
+button{
+    margin:20px;
+    height:60px;
+    width:120px;
+    font-size: 30px;
+    line-height: 60px;
+    border:0px;
+    cursor: pointer;
+}
