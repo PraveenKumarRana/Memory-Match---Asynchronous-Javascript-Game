@@ -1,5 +1,11 @@
 // global variable goes here
 var clickedArray = [];
+var interval;
+var started = false;
+var time = 0;
+var ready = true;
+var numCompleted = 0;
+
 // execute functions here
 setup();
 
@@ -21,9 +27,7 @@ function setup(){
         cell.completed= false;
         cell.clicked=false;
         cell.value=answers[i];
-    }
-    
-    cell.addEventListener("mouseenter",function(){
+        cell.addEventListener("mouseenter",function(){
         if(this.completed == false && this.clicked == false){
             this.style.background = "orange";
         }
@@ -34,11 +38,13 @@ function setup(){
         }
     });
     cell.addEventListener("click", function(){
+        startTimer();
         if(this.completed == false && this.clicked == false){
             clickedArray.push(this);
             reveal(this);
         }
     });
+    }
 }
 
 
@@ -47,4 +53,26 @@ function reveal(cell){
     cell.innerHTML = cell.value;
     cell.clicked=true;
     
+}
+
+function startTimer(){
+    if(started==false){
+        interval = setInterval(function(){
+            time++;
+        document.getElementById("timer").innerHTML = "Time Elapsed : " + time;
+        },1000);
+        started = true;
+    }
+}
+
+function hide(cell){
+    cell.style.backgroundColor = "skyblue";
+    cell.innerHTML = "";
+    cell.clicked = false;
+}
+
+function complete(cell){
+    numCompleted++;
+    cell.completed = true;
+    cell.style.backgroundColor = "purple";
 }
