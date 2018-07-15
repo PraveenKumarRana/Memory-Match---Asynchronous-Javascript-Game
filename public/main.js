@@ -27,7 +27,8 @@ function setup(){
         cell.completed= false;
         cell.clicked=false;
         cell.value=answers[i];
-        cell.addEventListener("mouseenter",function(){
+        
+    cell.addEventListener("mouseenter",function(){
         if(this.completed == false && this.clicked == false){
             this.style.background = "orange";
         }
@@ -37,6 +38,11 @@ function setup(){
             this.style.background = "skyblue";
         }
     });
+    
+    // if (ready == false){
+    //         return;
+    //     }
+        
     cell.addEventListener("click", function(){
         startTimer();
         if(this.completed == false && this.clicked == false){
@@ -44,7 +50,48 @@ function setup(){
             reveal(this);
         }
     });
+    
+    if(clickedArray.length == 2){
+        if(clickedArray[0].value == clickedArray[1].value){
+            // if matching pair is found then do this
+            complete(clickedArray[0]);
+            complete(clickedArray[1]);
+            
+            clickedArray = [];
+            
+            if(numCompleted == 8){
+                alert("You win in "+ time + " Seconds");
+                clearInterval(interval);
+            }
+        } 
+        else {
+            // if matchig pair is not found then do this
+            ready = false;
+            document.getElementById("gridTable").style.border = "5px solid red";
+            
+            setTimeout(function(){
+                // after 500ms delay
+                hide(clickedArray[0]);
+                hide(clickedArray[1]);
+                
+                clickedArray = [];
+                ready=true;
+                document.getElementById("gridTable").style.border = "0px";
+            },500);
+        }
     }
+    }
+    
+    document.addEventListener("keydown", function(event){
+        if(event.key>0 && event.key<10){
+            // this will handle the numpads click
+            grid[event.key - 1].click();
+        }
+    });
+    
+    document.getElementById("restart").addEventListener("click",function(){
+        location.reload();
+    });
 }
 
 
