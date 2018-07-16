@@ -39,9 +39,6 @@ function setup(){
         }
     });
     
-    // if (ready == false){
-    //         return;
-    //     }
         
     cell.addEventListener("click", function(){
         startTimer();
@@ -49,9 +46,11 @@ function setup(){
             clickedArray.push(this);
             reveal(this);
         }
-    });
-    
-    if(clickedArray.length == 2){
+        if(clickedArray.length == 2){
+            if (ready == false){
+            return;
+        }
+        console.log("This is the value of the clickedArray : " + clickedArray[0] + " and " + clickedArray[1]);
         if(clickedArray[0].value == clickedArray[1].value){
             // if matching pair is found then do this
             complete(clickedArray[0]);
@@ -60,7 +59,9 @@ function setup(){
             clickedArray = [];
             
             if(numCompleted == 8){
-                alert("You win in "+ time + " Seconds");
+                setTimeout(function(){
+                    alert("You win in "+ time + " Seconds");    
+                },5)
                 clearInterval(interval);
             }
         } 
@@ -77,9 +78,10 @@ function setup(){
                 clickedArray = [];
                 ready=true;
                 document.getElementById("gridTable").style.border = "0px";
-            },500);
+            },100);
         }
     }
+    });
     }
     
     document.addEventListener("keydown", function(event){

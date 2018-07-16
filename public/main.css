@@ -2,6 +2,7 @@ body{
     /*background-image: url(https://www.macpricesaustralia.com.au/wp-content/uploads/2018/07/2018-Space-Grey-MacBook-Pro-Mac-Computer.jpg);*/
     background-position: center;
     background-size: cover;
+    font-family:Quicksand;
 }
 image{
     opacity: 0.2;
