@@ -6,14 +6,14 @@
     - Use $ls and check for app.js file
     - Open app.js in the editor
         - Delete this 
-        <pre>app.listen(process.env.PORT, process.env.IP, function(){
+            app.listen(process.env.PORT, process.env.IP, function(){
                 console.log("Memory Match is running in the Cloud9 server ...");
-            });</pre>
+            });
             
         - Paste this 
-        <pre>app.listen(8080, function(){
+            app.listen(8080, function(){
                 console.log("Memory Match is running in the Cloud9 server ...");
-            });</pre>
+            });
             
     - Then run ** -- node app.js -- **
     - In browser open ** localhost:8080/ **
